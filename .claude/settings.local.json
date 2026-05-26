@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\HP\\\\Documents\\\\GiithubREPOSITORIES\\\\enciclica-audio\\\\src\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\HP\\\\Documents\\\\GiithubREPOSITORIES\\\\enciclica-audio\\\\src\\\\components\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\HP\\\\Documents\\\\GiithubREPOSITORIES\\\\enciclica-audio\\\\src\\\\hooks\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\HP\\\\Documents\\\\GiithubREPOSITORIES\\\\enciclica-audio\\\\src\\\\data\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\HP\\\\Documents\\\\GiithubREPOSITORIES\\\\enciclica-audio\\\\src\\\\utils\")"
+    ]
+  }
+}
