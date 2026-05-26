@@ -1,7 +1,8 @@
-import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX } from 'lucide-react'
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Gauge } from 'lucide-react'
 import { formatTime } from '../utils/formatters'
 
-const SPEEDS = [0.75, 1, 1.25, 1.5, 2]
+const SPEED_MIN = 0.75
+const SPEED_MAX = 1.25
 
 export default function AudioPlayer({
   currentTrack,
@@ -120,22 +121,28 @@ export default function AudioPlayer({
           </div>
         </div>
 
-        <div className="flex gap-1 flex-shrink-0">
-          {SPEEDS.map(s => (
-            <button
-              key={s}
-              onClick={() => changeRate(s)}
-              className={`text-xs px-2 py-1 rounded-md font-medium transition-all ${
-                playbackRate === s
-                  ? 'bg-amber-400 text-black'
-                  : 'text-white/40 hover:text-white hover:bg-white/10'
-              }`}
-              aria-label={`Velocidad ${s}x`}
-              aria-pressed={playbackRate === s}
-            >
-              {s}x
-            </button>
-          ))}
+        <div className="flex items-center gap-2 flex-1 min-w-0">
+          <Gauge size={18} className="text-white/40 flex-shrink-0" aria-hidden="true" />
+          <div className="relative h-1 flex-1 group cursor-pointer">
+            <div className="absolute inset-0 bg-white/20 rounded-full" />
+            <div
+              className="absolute inset-y-0 left-0 bg-white/60 rounded-full"
+              style={{ width: `${((playbackRate - SPEED_MIN) / (SPEED_MAX - SPEED_MIN)) * 100}%` }}
+            />
+            <input
+              type="range"
+              min={SPEED_MIN}
+              max={SPEED_MAX}
+              step={0.05}
+              value={playbackRate}
+              onChange={e => changeRate(+e.target.value)}
+              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+              aria-label="Velocidad de reproducción"
+            />
+          </div>
+          <span className="text-white/40 text-xs tabular-nums w-10 text-right flex-shrink-0">
+            {playbackRate.toFixed(2)}x
+          </span>
         </div>
       </div>
     </div>
