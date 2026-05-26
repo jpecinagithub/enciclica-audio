@@ -3,7 +3,7 @@ import { mkdirSync } from 'fs'
 
 mkdirSync('public/icons', { recursive: true })
 
-const src = 'public/images/leon4.jpg'
+const src = 'public/images/logoMH.png'
 const sizes = [
   { name: 'icon-192x192.png', size: 192 },
   { name: 'icon-512x512.png', size: 512 },
